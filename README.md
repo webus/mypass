@@ -27,6 +27,6 @@ This is a very simple utility with which you can conveniently and safely store y
 - Install `xsel` and `xclip` by this command: `sudo apt-get install xsel xclip`.
 - Install build tools by this command: `sudo apt-get install build-essential`.
 - Clone this repository `git clone https://github.com/webus/mypass`.
-- Go to repository and build it by this command: `cd mypass && make`.
+- Go to repository and build it by this command: `cd mypass && make vendor && make all`.
 - Copy `mypass` to your bin folder: `cp bin/mypass ~/bin`
 - Have fun! :)
