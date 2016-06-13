@@ -10,10 +10,10 @@ import (
 
 var cfg base.MyPassConfiguration
 
-const PASSWORD_BUCKET = "pass"
-const PASSWORD_LENGTH_BUCKET = "pass_len"
-const LOGIN_BUCKET = "login"
-const LOGIN_LENGTH_BUCKET = "login_len"
+const passwordBucket = "pass"
+const passwordLengthBucket = "pass_len"
+const loginBucket = "login"
+const loginLengthBucket = "login_len"
 
 func createBucket(DB *bolt.DB, bucketName string) {
 	DB.Update(func(tx *bolt.Tx) error {
@@ -39,10 +39,10 @@ func InitDatabase() {
 	defer DB.Close()
 
 	for _, bckt := range []string{
-		PASSWORD_BUCKET,
-		PASSWORD_LENGTH_BUCKET,
-		LOGIN_BUCKET,
-		LOGIN_LENGTH_BUCKET,
+		passwordBucket,
+		passwordLengthBucket,
+		loginBucket,
+		loginLengthBucket,
 	} {
 		createBucket(DB, bckt)
 	}
@@ -104,8 +104,8 @@ func GetDataBucket(bucketName string, dataName string) (string, error) {
 		}
 		return nil
 	})
-	data_clean := base.DecString(data, dataLenInt, cfg.Key)
-	return data_clean, nil
+	dataClean := base.DecString(data, dataLenInt, cfg.Key)
+	return dataClean, nil
 }
 
 func getDataLenBucket(bucketName string, dataName string, db *bolt.DB) (string, error) {
