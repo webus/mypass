@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"mypass/base"
-	"mypass/db"
+	"github.com/webus/mypass/base"
+	"github.com/webus/mypass/db"
 )
 
 var addLogin bool

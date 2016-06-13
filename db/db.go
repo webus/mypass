@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"path/filepath"
 	"github.com/boltdb/bolt"
-	"mypass/base"
+	"github.com/webus/mypass/base"
 )
 
 var cfg base.MyPassConfiguration

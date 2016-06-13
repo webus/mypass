@@ -4,8 +4,8 @@ import (
 	"log"
 	"fmt"
 	"github.com/spf13/cobra"
-	"mypass/db"
-	"mypass/base"
+	"github.com/webus/mypass/db"
+	"github.com/webus/mypass/base"
 )
 
 var getLogin bool

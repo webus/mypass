@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 	"fmt"
-	"mypass/cmd"
-	"mypass/db"
+	"github.com/webus/mypass/cmd"
+	"github.com/webus/mypass/db"
 )
 
 func main() {
