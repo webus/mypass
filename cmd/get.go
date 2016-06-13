@@ -17,8 +17,8 @@ func init() {
 
 var getCmd = &cobra.Command{
 	Use: "get",
-	Short: "get",
-	Long: "get",
+	Short: "Get password or login from MyPass",
+	Long: "Get password or login from MyPass",
 	Run: func(cmd *cobra.Command, args []string) {
 		if getLogin {
 			if len(args) == 0 {
@@ -31,16 +31,26 @@ var getCmd = &cobra.Command{
 				base.WriteAll(data)
 				fmt.Println("Check your clipboard.")
 			}
+		} else if len(args) == 0 {
+			fmt.Println("Pls, define key for password")
+			fmt.Println("eg: mypass get amazon")
+			fmt.Println("and you get your password for Amazon")
 		} else if len(args) == 1 {
-			data, err := db.GetDataBucket("pass",args[0])
+			data, err := db.GetDataBucket("pass", args[0])
 			if err != nil {
 				log.Fatal(err)
 			}
+			// debug
+			/*
 			log.Println(args[0])
 			log.Println("HERE")
 			log.Println(string(data))
+                        */
+			// debug
 			base.WriteAll(data)
 			fmt.Println("Check your clipboard.")
+		} else {
+			fmt.Println("Pls, define only one key for password")
 		}
 	},
 }
