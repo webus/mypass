@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"github.com/boltdb/bolt"
 	"github.com/webus/mypass/base"
+	"errors"
 )
 
 var cfg base.MyPassConfiguration
@@ -96,14 +97,19 @@ func GetDataBucket(bucketName string, dataName string) (string, error) {
 	var dataLenInt int
 	dataLenInt, err = strconv.Atoi(dataLen)
 	var data string
-	db.View(func(tx *bolt.Tx) error {
+	err = db.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte(bucketName))
 		v := b.Get([]byte(dataName))
 		if v != nil {
 			data = string(v)
+			return nil
+		} else {
+			return errors.New("Key not found")
 		}
-		return nil
 	})
+	if err != nil {
+		return "", err
+	}
 	dataClean := base.DecString(data, dataLenInt, cfg.Key)
 	return dataClean, nil
 }
