@@ -4,7 +4,7 @@ all: clean test build
 vendor:
 	gb vendor restore
 clean:
-	rm -RIf bin pkg bin
+	rm -Rf bin pkg bin
 build:
 	gb build all
 test:
